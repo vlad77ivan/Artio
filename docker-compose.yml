@@ -5,3 +5,4 @@ services:
     image: vlad0297/artio:release
     ports:
       - 4200:4200
+    restart: always
