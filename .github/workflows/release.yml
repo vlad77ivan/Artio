@@ -9,6 +9,9 @@ jobs:
   test:
     name: Test main branch
     runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: artio-ng
 
     steps:
       - uses: actions/checkout@v2
@@ -21,12 +24,16 @@ jobs:
     needs: [test]
     env:
       REPO: ${{ secrets.DOCKER_REPO }}
+    defaults:
+      run:
+        working-directory: artio-ng
+
     steps:
       - uses: actions/checkout@v2
       - name: Login to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USER }} 
              -p ${{ secrets.DOCKER_PASS }}
       - name: Build Docker image
-        run: docker build -t $REPO:release -t $REPO:${GITHUB_SHA::8} ./artio-ng/
+        run: docker build -t $REPO:release -t $REPO:${GITHUB_SHA::8} .
       - name: Publish Docker image
         run: docker push $REPO
