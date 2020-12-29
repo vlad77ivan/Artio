@@ -27,6 +27,6 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USER }} 
              -p ${{ secrets.DOCKER_PASS }}
       - name: Build Docker image
-        run: docker build -t $REPO:testing -t $REPO:${GITHUB_SHA::8} .
+        run: docker build -t $REPO:testing -t $REPO:${GITHUB_SHA::8} ./artio-ng/
       - name: Publish Docker image
         run: docker push $REPO
