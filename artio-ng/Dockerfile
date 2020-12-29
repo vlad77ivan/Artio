@@ -1,11 +1,9 @@
-FROM node:12.20.0-alpine3.10
+FROM node:14.1.0-alpine3.10
 
 WORKDIR /usr/src/app
 
-COPY package.json package-lock.json ./
+RUN npm install -g @angular/cli
 
-RUN npm install 
+COPY . . 
 
-COPY . .
-
-CMD npm start
+CMD npm install && ng serve --host 0.0.0.0 --port 4200
