@@ -1,0 +1,53 @@
+@import "../variables.scss";
+
+.top-bar {
+    background-color: map-get($app-primary, 300);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 5vh;
+
+
+    .bar-title {
+        color: map-get($app-accent, 50);
+        text-align: center;
+        margin: 0px;
+    }
+}
+
+.navbar-divider {
+    top: 5vh
+}
+
+.side-bar {
+    background-color: map-get($app-primary, 300);
+    position: fixed;
+    top: 5vh;
+    left: 0px;
+    bottom: 0px;
+    width: 8vw;
+
+    .button-tile {
+        height: 5vh;
+    }
+
+    .side-menu {
+        padding: 0px;
+    }
+
+    .side-menu-elem {
+        text-align: center;
+        color: map-get($app-accent, 50);
+    }
+}
+
+.content-space {
+    position: fixed;
+    top: 5vh;
+    left: 8vw;
+    bottom: 0px;
+    right: 0px;
+
+    background-color: blue;
+}
