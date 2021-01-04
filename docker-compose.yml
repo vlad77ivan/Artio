@@ -1,8 +1,34 @@
 version: "3.4"
 
 services:
-  app:
-    image: vlad0297/artio:release
+  redis:
+    image: redis
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - /home/vlad/Desktop/Artio/Data:/data
+    ports:
+      - 6379:6379
+    restart: always
+    container_name: artio_redis
+
+  backend:
+    image: vlad0297/artio_backend:release
+    depends_on:
+      - redis
+    ports:
+      - 42069:42069
+    environment:
+      REDIS_URL: redis:6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+    restart: always
+    container_name: artio_backend
+
+  frontend:
+    image: vlad0297/artio_frontend:release
+    depends_on:
+      - redis
+      - backend
     ports:
       - 4200:4200
     restart: always
+    container_name: artio_frontend
