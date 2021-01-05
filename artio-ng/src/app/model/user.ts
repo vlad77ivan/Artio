@@ -1,5 +1,8 @@
-export interface user {
-    name: string;
-    id: number;
-    cringe: boolean;
+export interface User {
+    username: string;
+    firstname: string;
+    lastname: string;
+
+    profilePhoto: string;
+    description: string;
 }

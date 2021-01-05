@@ -8,9 +8,11 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list'
+import { PersonalPage } from './component/personal-page/personal-page.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PersonalPage
   ],
   imports: [
     BrowserModule,

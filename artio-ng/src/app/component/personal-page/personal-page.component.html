@@ -1,0 +1,28 @@
+<mat-grid-list cols="4" class="profile-top">
+    <mat-grid-tile [colspan]="1">
+        <div class="profile-photo-container">
+
+        </div>
+        
+    </mat-grid-tile>
+    
+    <mat-grid-tile [colspan]="3">
+        <div class="description-container">
+            <p class="mat-display-1" style="font-weight: bold;"> {{this.user.firstname}} {{this.user.lastname}} </p>
+            <p class="mat-h1"> {{this.user.description}} </p>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<div class="posts-container">
+    <mat-grid-list cols="1" rowHeight="5:1">
+        <mat-grid-tile *ngFor="let post of posts" class="post-grid-tile">
+            <p class="mat-h1">
+                {{post.username}} said:
+            </p>
+            <p class="mat-h2">
+                {{post.text}}
+            </p>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

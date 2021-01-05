@@ -44,9 +44,16 @@
 
 .content-space {
     position: fixed;
+
     top: 5vh;
     left: 8vw;
     bottom: 0px;
     right: 0px;
+    margin: 20px;
 
+    overflow: scroll;
+}
+
+.content-space::-webkit-scrollbar {
+    display: none;
 }

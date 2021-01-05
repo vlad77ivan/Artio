@@ -10,13 +10,10 @@
   <mat-divider class="navbar-divider"></mat-divider>
   <div class="side-menu">
     <mat-selection-list [multiple]="false" style="padding: 0px">
-      <mat-list-option class="side-menu-elem">
+      <mat-list-option class="side-menu-elem" [selected]="this.exploreView" (click)="changeTab('explore')">
         Explore
       </mat-list-option>
-      <mat-list-option class="side-menu-elem">
-        Search
-      </mat-list-option>
-      <mat-list-option class="side-menu-elem">
+      <mat-list-option class="side-menu-elem" [selected]="this.profileView" (click)="changeTab('profile')">
         Profile
       </mat-list-option>
     </mat-selection-list>
@@ -24,5 +21,7 @@
 </section>
 
 <section class="content-space">
+  <personal-page *ngIf="this.profileView">
 
+  </personal-page>
 </section>
