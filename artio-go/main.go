@@ -10,21 +10,17 @@
 
 package main
 
-import (
-	"log"
-	"net/http"
-
-	sw "artio-go/go"
-)
+import "artio-go/go"
 
 func initRedis() {
 
 }
 
 func main() {
-	log.Printf("Server started")
 
-	router := sw.NewRouter()
-
-	log.Fatal(http.ListenAndServe(":8080", router))
+	err := swagger.InitServer()
+	if err != nil {
+		panic(err.Error())
+	}
+	swagger.Serve()
 }

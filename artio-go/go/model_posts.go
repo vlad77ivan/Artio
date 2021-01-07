@@ -10,22 +10,13 @@
 
 package swagger
 
-import (
-	"time"
-)
+type Posts struct {
 
-type Order struct {
+	Text string `json:"text,omitempty"`
 
-	Id int64 `json:"id,omitempty"`
+	Timestamp string `json:"timestamp,omitempty"`
 
-	PetId int64 `json:"petId,omitempty"`
+	Photo string `json:"photo,omitempty"`
 
-	Quantity int32 `json:"quantity,omitempty"`
-
-	ShipDate time.Time `json:"shipDate,omitempty"`
-
-	// Order Status
-	Status string `json:"status,omitempty"`
-
-	Complete bool `json:"complete,omitempty"`
+	User string `json:"user,omitempty"`
 }

@@ -56,88 +56,18 @@ var routes = Routes{
 		Index,
 	},
 
-	Route{
-		"AddPet",
+	Route {
+		"CreatePost",
 		strings.ToUpper("Post"),
-		"/v2/pet",
-		AddPet,
+		"/v2/post",
+		CreatePost,
 	},
 
-	Route{
-		"DeletePet",
-		strings.ToUpper("Delete"),
-		"/v2/pet/{petId}",
-		DeletePet,
-	},
-
-	Route{
-		"FindPetsByStatus",
+	Route {
+		"GetPosts",
 		strings.ToUpper("Get"),
-		"/v2/pet/findByStatus",
-		FindPetsByStatus,
-	},
-
-	Route{
-		"FindPetsByTags",
-		strings.ToUpper("Get"),
-		"/v2/pet/findByTags",
-		FindPetsByTags,
-	},
-
-	Route{
-		"GetPetById",
-		strings.ToUpper("Get"),
-		"/v2/pet/{petId}",
-		GetPetById,
-	},
-
-	Route{
-		"UpdatePet",
-		strings.ToUpper("Put"),
-		"/v2/pet",
-		UpdatePet,
-	},
-
-	Route{
-		"UpdatePetWithForm",
-		strings.ToUpper("Post"),
-		"/v2/pet/{petId}",
-		UpdatePetWithForm,
-	},
-
-	Route{
-		"UploadFile",
-		strings.ToUpper("Post"),
-		"/v2/pet/{petId}/uploadImage",
-		UploadFile,
-	},
-
-	Route{
-		"DeleteOrder",
-		strings.ToUpper("Delete"),
-		"/v2/store/order/{orderId}",
-		DeleteOrder,
-	},
-
-	Route{
-		"GetInventory",
-		strings.ToUpper("Get"),
-		"/v2/store/inventory",
-		GetInventory,
-	},
-
-	Route{
-		"GetOrderById",
-		strings.ToUpper("Get"),
-		"/v2/store/order/{orderId}",
-		GetOrderById,
-	},
-
-	Route{
-		"PlaceOrder",
-		strings.ToUpper("Post"),
-		"/v2/store/order",
-		PlaceOrder,
+		"/v2/post",
+		GetPosts,
 	},
 
 	Route{
@@ -148,51 +78,44 @@ var routes = Routes{
 	},
 
 	Route{
-		"CreateUsersWithArrayInput",
+		"GetBusiness",
+		strings.ToUpper("Get"),
+		"/v2/business",
+		GetBusiness,
+	},
+
+	Route{
+		"GetExplore",
+		strings.ToUpper("Get"),
+		"/v2/explore",
+		GetExplore,
+	},
+
+	Route{
+		"GetReviews",
+		strings.ToUpper("Get"),
+		"/v2/review",
+		GetReviews,
+	},
+
+	Route{
+		"GetUser",
+		strings.ToUpper("Get"),
+		"/v2/user",
+		GetUser,
+	},
+
+	Route{
+		"PostBusiness",
 		strings.ToUpper("Post"),
-		"/v2/user/createWithArray",
-		CreateUsersWithArrayInput,
+		"/v2/business",
+		PostBusiness,
 	},
 
 	Route{
-		"CreateUsersWithListInput",
+		"PostReview",
 		strings.ToUpper("Post"),
-		"/v2/user/createWithList",
-		CreateUsersWithListInput,
-	},
-
-	Route{
-		"DeleteUser",
-		strings.ToUpper("Delete"),
-		"/v2/user/{username}",
-		DeleteUser,
-	},
-
-	Route{
-		"GetUserByName",
-		strings.ToUpper("Get"),
-		"/v2/user/{username}",
-		GetUserByName,
-	},
-
-	Route{
-		"LoginUser",
-		strings.ToUpper("Get"),
-		"/v2/user/login",
-		LoginUser,
-	},
-
-	Route{
-		"LogoutUser",
-		strings.ToUpper("Get"),
-		"/v2/user/logout",
-		LogoutUser,
-	},
-
-	Route{
-		"UpdateUser",
-		strings.ToUpper("Put"),
-		"/v2/user/{username}",
-		UpdateUser,
+		"/v2/review",
+		PostReview,
 	},
 }
