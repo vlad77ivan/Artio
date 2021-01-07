@@ -9,10 +9,19 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list'
 import { PersonalPage } from './component/personal-page/personal-page.component';
+import { PostComponent } from './component/post/post.component';
+import { ExplorePageComponent } from './component/explore-page/explore-page.component';
+import { BusinessPageComponent } from './component/business-page/business-page.component';
+import { ReviewComponent } from './component/review/review.component';
+import { UtilsService } from './service/utils.service';
 @NgModule({
   declarations: [
     AppComponent,
-    PersonalPage
+    PersonalPage,
+    PostComponent,
+    ExplorePageComponent,
+    BusinessPageComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +31,7 @@ import { PersonalPage } from './component/personal-page/personal-page.component'
     MatButtonModule,
     MatListModule
   ],
-  providers: [],
+  providers: [UtilsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

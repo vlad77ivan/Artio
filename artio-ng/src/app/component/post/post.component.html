@@ -1,0 +1,19 @@
+<div class="post-card">
+    <div class="post-owner">
+        <p class="mat-h3"> {{inputPost.username}} said: </p>
+        <p class="caption">{{inputPost.timestamp | date:'fullDate'}} {{inputPost.timestamp | date:'shortTime'}}</p>
+    </div>
+    <div>
+        <mat-divider class="post-divider"></mat-divider>
+    </div>
+    <div class="post-content">
+        <div class="post-photo" *ngIf="inputPost.photo">
+            <img [src]="getImage(inputPost.photo)"/>
+        </div>
+        <div class="post-text">
+            <p class="mat-h1">
+                {{inputPost.text}}
+            </p>
+        </div>
+    </div>
+</div>

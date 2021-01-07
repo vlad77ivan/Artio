@@ -4,8 +4,6 @@
   </div>
 </section>
 
-
-
 <section class="side-bar">
   <mat-divider class="navbar-divider"></mat-divider>
   <div class="side-menu">
@@ -22,6 +20,7 @@
 
 <section class="content-space">
   <personal-page *ngIf="this.profileView">
-
   </personal-page>
+
+  <explore-page-component *ngIf="this.exploreView"></explore-page-component>
 </section>

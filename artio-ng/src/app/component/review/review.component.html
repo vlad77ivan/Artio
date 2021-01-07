@@ -1,0 +1,32 @@
+<div class="post-card">
+    <div class="post-owner">
+        <p class="mat-h3"> {{inputReview.user.username}} said: </p>
+        <span class="material-icons" *ngIf="inputReview.rating === 3">
+            sentiment_satisfied
+        </span>
+
+        <span class="material-icons" *ngIf="inputReview.rating < 3">
+            sentiment_very_dissatisfied
+        </span>
+
+        <span class="material-icons" *ngIf="inputReview.rating > 3">
+            sentiment_very_satisfied
+        </span>
+        <p class="caption">{{inputReview.timestamp | date:'fullDate'}} {{inputReview.timestamp | date:'shortTime'}}</p>
+    </div>
+    <div>
+        <mat-divider class="post-divider"></mat-divider>
+    </div>
+    <div class="post-content">
+        <div class="review-rating">
+            <p>
+                {{inputReview.rating}} / 5
+            </p>
+        </div>
+        <div class="post-text">
+            <p class="mat-h1">
+                {{inputReview.text}}
+            </p>
+        </div>
+    </div>
+</div>

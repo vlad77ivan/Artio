@@ -1,13 +1,12 @@
 @import "../variables.scss";
 
 .top-bar {
-    background-color: map-get($app-primary, 300);
+    background-color: rgba(45, 45, 45, 0.2);
     position: fixed;
     top: 0px;
     left: 0px;
     right: 0px;
     height: 5vh;
-
 
     .bar-title {
         color: map-get($app-accent, 50);
@@ -16,12 +15,13 @@
     }
 }
 
+
 .navbar-divider {
     top: 5vh
 }
 
 .side-bar {
-    background-color: map-get($app-primary, 300);
+    background-color: rgba(45, 45, 45, 0.2);
     position: fixed;
     top: 5vh;
     left: 0px;
