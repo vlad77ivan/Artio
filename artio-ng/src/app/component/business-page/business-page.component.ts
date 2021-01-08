@@ -61,7 +61,7 @@ export class BusinessPageComponent implements OnInit {
     getImage(encodedImage: string) {
         return this.utilsService.getImage(encodedImage);
     }
-    
+
     postReview() {
         console.log(this.newRating);
         console.log(this.newReviewText);

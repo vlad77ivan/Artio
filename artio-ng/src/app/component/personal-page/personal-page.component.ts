@@ -1,5 +1,4 @@
 import { OnInit, Component } from "@angular/core";
-import { DomSanitizer } from "@angular/platform-browser";
 import { Post } from "src/app/model/post";
 import { User } from "src/app/model/user";
 import { UtilsService } from "src/app/service/utils.service";
@@ -12,6 +11,8 @@ import { UtilsService } from "src/app/service/utils.service";
 })
 
 export class PersonalPage implements OnInit {
+    public newPostText: string = '';
+    public imageSrc: string = '';
 
     public user: User = {
         username: "milbay",
@@ -73,7 +74,30 @@ export class PersonalPage implements OnInit {
     getImage(encodedImage: string) {
         return this.utilsService.getImage(encodedImage);
     }
-    
+
+    handleInputChange(e: any) {
+        var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+        var pattern = /image-*/;
+        var reader = new FileReader();
+        if (!file.type.match(pattern)) {
+          alert('invalid format');
+          return;
+        }
+        reader.onload = this._handleReaderLoaded.bind(this);
+        reader.readAsDataURL(file);
+      }
+
+      _handleReaderLoaded(e: any) {
+        let reader = e.target;
+        this.imageSrc = reader.result;
+        console.log(this.imageSrc)
+      }
+
+    makePost() {
+        console.log(this.imageSrc);
+        console.log(this.newPostText);
+    }
+
     ngOnInit() {
     }
 }

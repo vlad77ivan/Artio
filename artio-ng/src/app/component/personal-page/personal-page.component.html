@@ -14,7 +14,21 @@
 </mat-grid-list>
 
 <div class="make-post-container">
+    <div class="example-form">
+        <div class="full-width-input">
+            <label for="fname">Review</label>
+            <input type="text" id="fname" name="firstname" class="muie" placeholder="Your thoughts here" [(ngModel)]="newPostText">
+        </div>
 
+        <div class="image-upload" style="margin: 10px">
+            <img [src]="imageSrc" style="max-width:300px;max-height:300px"/>
+            <input name="imageUrl" type="file" accept="image/*" (change)="handleInputChange($event)" />
+        </div> 
+
+        <button mat-stroked-button class="submit-button" type="button" (click)="makePost()">
+            Submit
+        </button>
+    </div>
 </div>
 
 <div class="posts-container">
