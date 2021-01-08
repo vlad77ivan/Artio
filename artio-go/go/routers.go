@@ -57,6 +57,13 @@ var routes = Routes{
 	},
 
 	Route {
+		"Login",
+		strings.ToUpper("Post"),
+		"/v2/login",
+		LoginUser,
+	},
+
+	Route {
 		"CreatePost",
 		strings.ToUpper("Post"),
 		"/v2/post",

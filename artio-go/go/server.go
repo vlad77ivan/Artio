@@ -8,6 +8,7 @@ import (
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
+	"os"
 	"sort"
 )
 var ApiServer *Server
@@ -18,10 +19,10 @@ type Server struct {
 }
 
 func InitServer() error {
-	//redisPassword := os.Getenv("REDIS_PASSWORD")
+	redisPassword := os.Getenv("REDIS_PASSWORD")
 	rdb := redis.NewClient(&redis.Options{
 		Addr: "localhost:6380",
-		Password: "",
+		Password: redisPassword,
 		DB: 0,
 	})
 	pong, err := rdb.Ping(context.Background()).Result()
@@ -44,6 +45,22 @@ func Serve() {
 	log.Fatal(http.ListenAndServe(":42069", ApiServer.router))
 }
 
+func (s *Server) LoginUser(u User) (bool, error) {
+	username := u.Username
+	pass := u.Password
+
+	ctx := context.Background()
+	byteUser, err := s.redis.Get(ctx, username).Bytes()
+	if err != nil {
+		return false, err
+	}
+	var storedUser User
+	err = json.Unmarshal(byteUser, &storedUser)
+	if err != nil {
+		return false, err
+	}
+	return pass == storedUser.Password, nil
+}
 
 func (s *Server) StoreUser(u User) error {
 	byteUser, err := json.Marshal(u)
@@ -198,6 +215,6 @@ func (s *Server) GetExploreFeed() ([]Explorable, error) {
 		return explorable[i].GetTimestamp() > explorable[i].GetTimestamp()
 	})
 
-	return explorable, nil
+	return explorable[:20], nil
 }
 

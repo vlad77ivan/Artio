@@ -16,6 +16,26 @@ import (
 	"net/http"
 )
 
+func LoginUser(w http.ResponseWriter, r *http.Request) {
+	var u User
+	err := json.NewDecoder(r.Body).Decode(&u)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	loggedIn, err := ApiServer.LoginUser(u)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(loggedIn)
+}
+
 func CreateUser(w http.ResponseWriter, r *http.Request) {
 	var u User
 	err := json.NewDecoder(r.Body).Decode(&u)
@@ -145,7 +165,6 @@ func GetBusiness(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(business)
 }
 
-//TODO:
 func GetExplore(w http.ResponseWriter, r *http.Request) {
 	exploreList, err := ApiServer.GetExploreFeed()
 	if err != nil {
