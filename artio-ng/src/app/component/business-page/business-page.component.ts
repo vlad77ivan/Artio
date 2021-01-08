@@ -16,6 +16,9 @@ export class BusinessPageComponent implements OnInit {
         description: "Buna ziua avem shaorma fffffff mare si ffff buna si fffffff mare si ffff buna si fffffff mare si ffff buna si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si tot ce vrea plt hai barosane sau comanda la numarul 0792 constipatie amandoi"
     } as Business;
 
+    newRating: number = -1;
+    newReviewText: string = "";
+
     public user: User = {
         username: "milbay",
         firstname: "Mill",
@@ -59,4 +62,12 @@ export class BusinessPageComponent implements OnInit {
         return this.utilsService.getImage(encodedImage);
     }
     
+    postReview() {
+        console.log(this.newRating);
+        console.log(this.newReviewText);
+    }
+
+    updateRating(event: any) {
+        this.newRating = event.value;
+    }
 }
