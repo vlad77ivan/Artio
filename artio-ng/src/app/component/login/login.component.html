@@ -30,23 +30,24 @@
                 <input type="text" id="fname" name="firstname" class="muie" [(ngModel)]="username">
             </div>
             <div class="login-input">
-                <label for="fname">Password</label>
-                <input type="password" id="fname" name="firstname" class="muie" [(ngModel)]="password">
+                <label for="fname1">Password</label>
+                <input type="password" id="fname1" name="firstname" class="muie" [(ngModel)]="password">
             </div>
             <div class="login-input">
-                <label for="fname">Last name</label>
-                <input type="text" id="fname" name="firstname" class="muie" [(ngModel)]="lastname">
+                <label for="fname2">Last name</label>
+                <input type="text" id="fname2" name="firstname" class="muie" [(ngModel)]="lastname">
             </div>
             <div class="login-input">
-                <label for="fname">First name</label>
-                <input type="text" id="fname" name="firstname" class="muie" [(ngModel)]="firstname">
+                <label for="fname3">First name</label>
+                <input type="text" id="fname3" name="firstname" class="muie" [(ngModel)]="firstname">
             </div>
             <div class="login-input">
-                <label for="fname">Description</label>
-                <input type="text" id="fname" name="firstname" class="muie" [(ngModel)]="description">
+                <label for="fname4">Description</label>
+                <input type="text" id="fname4" name="firstname" class="muie" [(ngModel)]="description">
             </div>
             <div class="image-upload login-input" style="margin: 10px" style="color:rgba(255, 255, 255, 0.9); margin-top: 5px; margin-bottom: 5px;">
-                <input name="imageUrl" type="file" accept="image/*" (change)="handleInputChange($event)" />
+                <label for="fname5">Profile Photo</label>
+                <input name="imageUrl" id="fname5" type="file" accept="image/*" (change)="handleInputChange($event)" />
             </div>
             <button mat-stroked-button class="submit-button" type="button" (click)="signUp()">
                 Sign Up
