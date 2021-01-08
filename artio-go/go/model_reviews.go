@@ -10,11 +10,15 @@
 
 package swagger
 
-type ApiResponse struct {
+type Reviews struct {
 
-	Code int32 `json:"code,omitempty"`
+	Text string `json:"text,omitempty"`
 
-	Type_ string `json:"type,omitempty"`
+	Timestamp string `json:"timestamp,omitempty"`
 
-	Message string `json:"message,omitempty"`
+	Rating int32 `json:"rating,omitempty"`
+
+	User string `json:"user,omitempty"`
+
+	Business string `json:"business,omitempty"`
 }

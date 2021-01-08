@@ -10,9 +10,15 @@
 
 package swagger
 
-type Category struct {
+type Business struct {
 
-	Id int64 `json:"id,omitempty"`
+	Username string `json:"username,omitempty"`
 
-	Name string `json:"name,omitempty"`
+	CompanyName string `json:"company_name,omitempty"`
+
+	ProfilePicture string `json:"profile_picture,omitempty"`
+
+	Description string `json:"description,omitempty"`
+
+	Reviews []string `json:"reviews,omitempty"`
 }

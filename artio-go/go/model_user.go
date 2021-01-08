@@ -12,20 +12,15 @@ package swagger
 
 type User struct {
 
-	Id int64 `json:"id,omitempty"`
-
 	Username string `json:"username,omitempty"`
 
-	FirstName string `json:"firstName,omitempty"`
+	FirstName string `json:"first_name,omitempty"`
 
-	LastName string `json:"lastName,omitempty"`
+	LastName string `json:"last_name,omitempty"`
 
-	Email string `json:"email,omitempty"`
+	ProfilePicture string `json:"profile_picture,omitempty"`
 
-	Password string `json:"password,omitempty"`
+	Description string `json:"description,omitempty"`
 
-	Phone string `json:"phone,omitempty"`
-
-	// User Status
-	UserStatus int32 `json:"userStatus,omitempty"`
+	Posts []string `json:"posts,omitempty"`
 }
