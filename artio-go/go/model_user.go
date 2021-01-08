@@ -22,5 +22,7 @@ type User struct {
 
 	Description string `json:"description,omitempty"`
 
+	Password string `json:"password"`
+
 	Posts []string `json:"posts,omitempty"`
 }
