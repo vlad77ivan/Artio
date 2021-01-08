@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   public exploreView = true;
   public profileView = false;
-
+  public loggedIn = false;
+  
   constructor() {
   }
 

@@ -1,0 +1,57 @@
+<mat-grid-list cols="3" class="profile-top" rowHeight="55%" *ngIf="loginMode">
+    <mat-grid-tile [colspan]="1"></mat-grid-tile>
+    <mat-grid-tile [colspan]="1" class="login-tile">
+        <div class="example-form">
+            <div class="login-input">
+                <label for="fname">Username</label>
+                <input type="text" id="fname" name="firstname" class="muie" [(ngModel)]="username">
+            </div>
+            <div class="login-input">
+                <label for="fname">Password</label>
+                <input type="password" id="fname" name="firstname" class="muie" [(ngModel)]="password">
+            </div>
+            <button mat-stroked-button class="submit-button" type="button" (click)="login()">
+                Log In
+            </button>
+            <button mat-stroked-button class="submit-button" type="button" (click)="signUpToggle()">
+                Sign Up
+            </button>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1"></mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="3" class="profile-top" rowHeight="75%" *ngIf="!loginMode">
+    <mat-grid-tile [colspan]="1"></mat-grid-tile>
+    <mat-grid-tile [colspan]="1" class="login-tile">
+        <div class="example-form">
+            <div class="login-input">
+                <label for="fname">Username</label>
+                <input type="text" id="fname" name="firstname" class="muie" [(ngModel)]="username">
+            </div>
+            <div class="login-input">
+                <label for="fname">Password</label>
+                <input type="password" id="fname" name="firstname" class="muie" [(ngModel)]="password">
+            </div>
+            <div class="login-input">
+                <label for="fname">Last name</label>
+                <input type="text" id="fname" name="firstname" class="muie" [(ngModel)]="lastname">
+            </div>
+            <div class="login-input">
+                <label for="fname">First name</label>
+                <input type="text" id="fname" name="firstname" class="muie" [(ngModel)]="firstname">
+            </div>
+            <div class="login-input">
+                <label for="fname">Description</label>
+                <input type="text" id="fname" name="firstname" class="muie" [(ngModel)]="description">
+            </div>
+            <div class="image-upload login-input" style="margin: 10px" style="color:rgba(255, 255, 255, 0.9); margin-top: 5px; margin-bottom: 5px;">
+                <input name="imageUrl" type="file" accept="image/*" (change)="handleInputChange($event)" />
+            </div>
+            <button mat-stroked-button class="submit-button" type="button" (click)="signUp()">
+                Sign Up
+            </button>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1"></mat-grid-tile>
+</mat-grid-list>

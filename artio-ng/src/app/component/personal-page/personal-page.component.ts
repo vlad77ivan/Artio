@@ -87,11 +87,11 @@ export class PersonalPage implements OnInit {
         reader.readAsDataURL(file);
       }
 
-      _handleReaderLoaded(e: any) {
+    _handleReaderLoaded(e: any) {
         let reader = e.target;
         this.imageSrc = reader.result;
         console.log(this.imageSrc)
-      }
+    }
 
     makePost() {
         console.log(this.imageSrc);

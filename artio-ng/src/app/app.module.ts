@@ -17,6 +17,7 @@ import { UtilsService } from './service/utils.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { LoginComponent } from './component/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     PostComponent,
     ExplorePageComponent,
     BusinessPageComponent,
-    ReviewComponent
+    ReviewComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
