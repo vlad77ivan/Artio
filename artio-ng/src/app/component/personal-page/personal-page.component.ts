@@ -1,6 +1,7 @@
-import { OnInit, Component } from "@angular/core";
+import { OnInit, Component, Input } from "@angular/core";
 import { Post } from "src/app/model/post";
 import { User } from "src/app/model/user";
+import { UsersService } from "src/app/service/user.service";
 import { UtilsService } from "src/app/service/utils.service";
 
 
@@ -14,62 +15,22 @@ export class PersonalPage implements OnInit {
     public newPostText: string = '';
     public imageSrc: string = '';
 
-    public user: User = {
-        username: "milbay",
-        firstname: "Mill",
-        lastname: "Bay",
+    @Input()
+    user!: User;
 
-        profilePhoto: "caca",
-        description: "Imi place sa mananc aicea vreau sa imi iau un caine si sa cunosc alti pasionati de shaorma. \n Peste medie. Imi place sa mananc aicea vreau sa imi iau un caine si sa cunosc alti pasionati de shaorma. \n Peste medie. Imi place sa mananc aicea vreau sa imi iau un caine si sa cunosc alti pasionati de shaorma. \n Peste medie."
-    };
+    public posts: Array<Post> = []
 
-    public posts: Array<Post> = [ 
-        {
-            photo: "2",
-            text: "doamne fereste ce am putut vedea aici terifiant super cool amaizng wow guys like gen ce tare",
-            username: "carnat",
-            timestamp: new Date()
-        },
-        {
-            photo: "",
-            text: "doamne fereste ce am putut vedea aici terifiant super cool amaizng wow guys like gen ce tare",
-            username: "carnat",
-            timestamp: new Date()
-        },
-        {
-            photo: "3",
-            text: "doamne fereste ce am putut vedea aici terifiant super cool amaizng wow guys like gen ce tare",
-            username: "carnat",
-            timestamp: new Date()
-        },
-        {
-            photo: "3",
-            text: "doamne fereste ce am putut vedea aici terifiant super cool amaizng wow guys like gen ce tare",
-            username: "carnat",
-            timestamp: new Date()
-        },
-        {
-            photo: "",
-            text: "doamne fereste ce am putut vedea aici terifiant super cool amaizng wow guys like gen ce tare",
-            username: "carnat",
-            timestamp: new Date()
-        },
-        {
-            photo: "3",
-            text: "doamne fereste ce am putut vedea aici terifiant super cool amaizng wow guys like gen ce tare",
-            username: "carnat",
-            timestamp: new Date()
-        },
-        {
-            photo: "",
-            text: "doamne fereste ce am putut vedea aici terifiant super cool amaizng wow guys like gen ce tare",
-            username: "carnat",
-            timestamp: new Date()
-        },
-    ]
-
-    constructor(private utilsService: UtilsService) {
+    constructor(private utilsService: UtilsService,
+        private usersService: UsersService) {
     }
+
+    ngOnInit() {
+        console.log(this.user);
+        this.usersService.getPosts(this.user.username).subscribe((posts) => {
+            this.posts = posts as Array<Post>;
+        });
+    }
+
 
     getImage(encodedImage: string) {
         return this.utilsService.getImage(encodedImage);
@@ -94,10 +55,17 @@ export class PersonalPage implements OnInit {
     }
 
     makePost() {
-        console.log(this.imageSrc);
-        console.log(this.newPostText);
+        const newPost = {
+            username: this.user.username,
+            text: this.newPostText,
+            photo: this.imageSrc,
+            timestamp: new Date(),
+        } as Post;
+
+        this.usersService.makePost(newPost).subscribe(() => {
+            this.posts.push(newPost);
+        });
     }
 
-    ngOnInit() {
-    }
+   
 }

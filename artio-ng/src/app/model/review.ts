@@ -5,7 +5,7 @@ export interface Review {
     text: string;
 	timestamp: Date;
 	rating: number;
-	user: User;
-	business: Business;
+	user: string;
+	business: string;
 
 }

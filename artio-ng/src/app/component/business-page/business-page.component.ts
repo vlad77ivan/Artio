@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/model/user';
+import { BusinessService } from 'src/app/service/business.service';
 import { UtilsService } from 'src/app/service/utils.service';
 import { Business } from '../../model/business';
 import { Review } from '../../model/review';
@@ -10,52 +11,24 @@ import { Review } from '../../model/review';
 })
 export class BusinessPageComponent implements OnInit {
     @Input() business = {
-        username: "socului_rulz",
-        companyName: "Shaormeria Socului",
-        profilePhoto: "a",
-        description: "Buna ziua avem shaorma fffffff mare si ffff buna si fffffff mare si ffff buna si fffffff mare si ffff buna si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si tot ce vrea plt hai barosane sau comanda la numarul 0792 constipatie amandoi"
     } as Business;
 
+    @Input() user = {
+    } as User;
+    
     newRating: number = -1;
     newReviewText: string = "";
 
-    public user: User = {
-        username: "milbay",
-        firstname: "Mill",
-        lastname: "Bay",
+    public reviews: Array<Review> = [];
 
-        profilePhoto: "caca",
-        description: "."
-    };
-
-    public reviews: Array<Review> = [
-        {
-            text: "peste medie o fost super tare",
-            timestamp: new Date(),
-            rating: 3,
-            user: this.user,
-            business: this.business
-        },
-        {
-            text: "peste medie o fost super tare cea mai smechera cu de toate",
-            timestamp: new Date(),
-            rating: 5,
-            user: this.user,
-            business: this.business
-        },
-        {
-            text: "naspa tare ketchup ieftin",
-            timestamp: new Date(),
-            rating: 2,
-            user: this.user,
-            business: this.business
-        },
-    ];
-
-    constructor(private utilsService: UtilsService) {
+    constructor(private utilsService: UtilsService,
+        private businessService: BusinessService) {
     }
 
     ngOnInit() {
+        this.businessService.getReviews(this.business.username).subscribe((reviews) => {
+            this.reviews = reviews as Array<Review>;
+        })
     }
 
     getImage(encodedImage: string) {
@@ -63,8 +36,17 @@ export class BusinessPageComponent implements OnInit {
     }
 
     postReview() {
-        console.log(this.newRating);
-        console.log(this.newReviewText);
+        const newReview = {
+            business: this.business.companyName,
+            user: this.user.username,
+            text: this.newReviewText,
+            rating: this.newRating,
+            timestamp: new Date()
+        } as Review;
+
+        this.businessService.postReview(newReview).subscribe(() => {
+            this.reviews.push(newReview);
+        });
     }
 
     updateRating(event: any) {

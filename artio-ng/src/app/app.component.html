@@ -19,11 +19,11 @@
 </section>
 
 <section class="content-space" *ngIf="loggedIn">
-  <personal-page *ngIf="this.profileView"></personal-page>
+  <personal-page *ngIf="this.profileView" [user]="this.loggedUser"></personal-page>
 
   <explore-page-component *ngIf="this.exploreView"></explore-page-component>
 </section>
 
 <section class="content-space" *ngIf="!loggedIn">
-  <login-component></login-component>
+  <login-component (logEmitter)="logEvent($event)"></login-component>
 </section>
