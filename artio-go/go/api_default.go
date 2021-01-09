@@ -168,7 +168,7 @@ func GetExplore(w http.ResponseWriter, r *http.Request) {
 
 func GetReviews(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
-	businessUsername := params["username"]
+	businessUsername := params["businessName"]
 
 	reviews, err := ApiServer.GetReviews(businessUsername)
 	if err != nil {
