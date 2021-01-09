@@ -12,7 +12,7 @@ package swagger
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"github.com/gorilla/mux"
 	"net/http"
 )
 
@@ -23,6 +23,7 @@ func LoginUser(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
+
 
 	loggedIn, err := ApiServer.LoginUser(u)
 	if err != nil {
@@ -111,13 +112,8 @@ func PostReview(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetUser(w http.ResponseWriter, r *http.Request) {
-	var username string
-	bodyBytes, err := ioutil.ReadAll(r.Body)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	username = string(bodyBytes)
+	params := mux.Vars(r)
+	username := params["username"]
 
 	user, err := ApiServer.GetUser(username)
 	if err != nil {
@@ -130,13 +126,8 @@ func GetUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetPosts(w http.ResponseWriter, r *http.Request) {
-	var username string
-	bodyBytes, err := ioutil.ReadAll(r.Body)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
-	username = string(bodyBytes)
+	params := mux.Vars(r)
+	username := params["username"]
 
 	posts, err := ApiServer.GetPosts(username)
 	if err != nil {
@@ -150,15 +141,14 @@ func GetPosts(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetBusiness(w http.ResponseWriter, r *http.Request) {
-	var businessUsername string
-	bodyBytes, err := ioutil.ReadAll(r.Body)
+	params := mux.Vars(r)
+	businessUsername := params["username"]
+
+	business, err := ApiServer.GetBusiness(businessUsername)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	businessUsername = string(bodyBytes)
-
-	business, err := ApiServer.GetBusiness(businessUsername)
 
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusOK)
@@ -177,13 +167,8 @@ func GetExplore(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetReviews(w http.ResponseWriter, r *http.Request) {
-	var businessUsername string
-	bodyBytes, err := ioutil.ReadAll(r.Body)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
-	businessUsername = string(bodyBytes)
+	params := mux.Vars(r)
+	businessUsername := params["username"]
 
 	reviews, err := ApiServer.GetReviews(businessUsername)
 	if err != nil {

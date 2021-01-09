@@ -73,7 +73,7 @@ var routes = Routes{
 	Route {
 		"GetPosts",
 		strings.ToUpper("Get"),
-		"/v2/post",
+		"/v2/post/{username}",
 		GetPosts,
 	},
 
@@ -87,7 +87,7 @@ var routes = Routes{
 	Route{
 		"GetBusiness",
 		strings.ToUpper("Get"),
-		"/v2/business",
+		"/v2/business{businessName}",
 		GetBusiness,
 	},
 
@@ -101,14 +101,14 @@ var routes = Routes{
 	Route{
 		"GetReviews",
 		strings.ToUpper("Get"),
-		"/v2/review",
+		"/v2/review/{businessName}",
 		GetReviews,
 	},
 
 	Route{
 		"GetUser",
 		strings.ToUpper("Get"),
-		"/v2/user",
+		"/v2/user/{username}",
 		GetUser,
 	},
 
