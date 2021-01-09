@@ -16,7 +16,7 @@ type Reviews struct {
 
 	Timestamp string `json:"timestamp,omitempty"`
 
-	Rating int32 `json:"rating,omitempty"`
+	Rating string `json:"rating,omitempty"`
 
 	User string `json:"user,omitempty"`
 
