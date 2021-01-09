@@ -14,7 +14,6 @@ export class BusinessService {
         return this.http.get(baseUrl + '/business/' + username);
     }
 
-
     getReviews(username: string) {
         return this.http.get(baseUrl + '/review/' + username);
     }

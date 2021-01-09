@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../model/user';
 import { baseUrl } from './urlHelpers';
+import { Post } from '../model/post';
 @Injectable({
     providedIn: 'root',
 })
@@ -10,14 +11,16 @@ export class UsersService {
 
     constructor(private http: HttpClient) { }
 
-    httpOptions = {
-        headers: new HttpHeaders({ 
-          'Access-Control-Allow-Origin':'*'
-        })
-    }
-
     getUser(username: string) {
         return this.http.get(baseUrl + '/user/' + username);
+    }
+
+    getPosts(username: string) {
+        return this.http.get(baseUrl + '/post/' + username);
+    }
+
+    makePost(post: Post) {
+        return this.http.post(baseUrl + '/post', post);
     }
 
     logIn(username: string, password: string) {
@@ -28,6 +31,6 @@ export class UsersService {
     }
 
     signUp(newUser: User) {
-        return this.http.post(baseUrl + '/user', newUser, this.httpOptions);
+        return this.http.post(baseUrl + '/user', newUser);
     }
 }   
