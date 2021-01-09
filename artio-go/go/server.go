@@ -216,6 +216,9 @@ func (s *Server) GetExploreFeed() ([]Explorable, error) {
 		return explorable[i].GetTimestamp() > explorable[i].GetTimestamp()
 	})
 
+	if len(explorable) < 20 {
+		return explorable, nil
+	}
 	return explorable[:20], nil
 }
 
