@@ -1,7 +1,7 @@
 {
     "/v2/*": {
         "target": "http://4droid.go.ro:42069",
-        "secure": false,
-        "changeOrigin": true
-    }
+        "secure": false
+    },
+    "changeOrigin": true
 }
