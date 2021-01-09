@@ -1,1 +1,1 @@
-export const baseUrl = "http://4droid.go.ro:4200/v2";
+export const baseUrl = "http://4droid.go.ro:42069/v2";
