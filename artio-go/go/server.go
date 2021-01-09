@@ -20,8 +20,9 @@ type Server struct {
 
 func InitServer() error {
 	redisPassword := os.Getenv("REDIS_PASSWORD")
+	redisAddr := os.Getenv("REDIS_URL")
 	rdb := redis.NewClient(&redis.Options{
-		Addr: "localhost:6380",
+		Addr: redisAddr,
 		Password: redisPassword,
 		DB: 0,
 	})
