@@ -10,12 +10,7 @@ import { Business } from '../../model/business'
 })
 export class ExplorePageComponent implements OnInit {
     public showBusiness = false;
-    public businessToShow = {
-        username: "socului_rulz",
-        company_name: "Shaormeria Socului",
-        profile_picture: "a",
-        description: "Buna ziua avem shaorma fffffff mare si ffff buna si fffffff mare si ffff buna si fffffff mare si ffff buna si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si tot ce vrea plt hai barosane sau comanda la numarul 0792 constipatie amandoi"
-    } as Business;
+    public businessToShow = {} as Business;
 
     @Input() user: User = {} as User;
     
@@ -23,22 +18,22 @@ export class ExplorePageComponent implements OnInit {
 
     businesses = [
         {
-            username: "socului_rulz",
-            company_name: "Shaormeria Snecherie",
-            profile_picture: "a",
-            description: "Buna ziua avem shaorma fffffff mare si ffff buna si fffffff mare si ffff buna si fffffff mare si ffff buna si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si tot ce vrea plt hai barosane sau comanda la numarul 0792 constipatie amandoi"
+            username: "petshop",
+            company_name: "PetShop",
+            profile_picture: "",
+            description: "Puteti gasi o gama larga de mancare, jucarii si accesorii pentru cele mai intalnite animale de companie. Ne gasiti pe Strada Locuirii Nr. 420 sau la 0797420420."
         } as Business,
         {
-            username: "socului_rulz",
-            company_name: "Shaormeria Golanie",
-            profile_picture: "a",
-            description: "Buna ziua avem shaorma fffffff mare si ffff buna si fffffff mare si ffff buna si fffffff mare si ffff buna si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si tot ce vrea plt hai barosane sau comanda la numarul 0792 constipatie amandoi"
+            username: "vet",
+            company_name: "Cabinet Veterinar",
+            profile_picture: "",
+            description: "Va stam la dispozitie pentru consultatii si interventii 24/7. Singurul cabinet veterinar deschis non stop, pe Aleea Mersului Nr. 002 sau la 07881232420."
         } as Business,
         {
-            username: "socului_rulz",
-            company_name: "Shaormeria Socului",
-            profile_picture: "a",
-            description: "Buna ziua avem shaorma fffffff mare si ffff buna si fffffff mare si ffff buna si fffffff mare si ffff buna si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si tot ce vrea plt hai barosane sau comanda la numarul 0792 constipatie amandoi"
+            username: "drug",
+            company_name: "Farmacie Veterinara",
+            profile_picture: "",
+            description: "Farmacie veterinara deschisa non-stop in zona Sectorului 1. Calea Apusului nr. 22."
         } as Business
     ]
 
@@ -47,17 +42,9 @@ export class ExplorePageComponent implements OnInit {
     }   
 
     ngOnInit() {
-        this.getBusinesses();
         this.businessService.getExplore().subscribe((items) => {
             this.latestItems = items as Array<any>;
         })
-    }
-
-    getBusinesses() {
-        // x 3
-        // this.businessService.getBusiness('').subscribe((business) => {
-        //     this.businesses.push(business as Business);
-        // })
     }
 
     getImage(encodedImage: string) {
@@ -75,5 +62,9 @@ export class ExplorePageComponent implements OnInit {
 
     back() {
         this.showBusiness = false;
+    }
+
+    getImagePath(username: string) {
+        return "../../../assets/" + username + ".jpg";
     }
 }

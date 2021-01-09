@@ -61,4 +61,8 @@ export class BusinessPageComponent implements OnInit {
     checkFields(): boolean {
         return this.newReviewText === '' || this.newRating === -1;
     }
+
+    getImagePath() {
+        return "../../../assets/" + this.business.username + ".jpg";
+    }
 }
