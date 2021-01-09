@@ -20,7 +20,7 @@
         </div>
     </div>
 </div>
-<business-page-component *ngIf="showBusiness" [business]="businessToShow"></business-page-component>
+<business-page-component *ngIf="showBusiness" [business]="businessToShow" [user]="user"></business-page-component>
 
 <button mat-flat-button class="back-button" type="button" *ngIf="showBusiness" (click)="back()">
     <span class="material-icons">

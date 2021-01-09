@@ -21,7 +21,7 @@
 <section class="content-space" *ngIf="loggedIn">
   <personal-page *ngIf="this.profileView" [user]="this.loggedUser"></personal-page>
 
-  <explore-page-component *ngIf="this.exploreView"></explore-page-component>
+  <explore-page-component *ngIf="this.exploreView" [user]="this.loggedUser"></explore-page-component>
 </section>
 
 <section class="content-space" *ngIf="!loggedIn">

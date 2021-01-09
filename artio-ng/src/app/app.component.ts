@@ -36,6 +36,7 @@ export class AppComponent implements OnInit{
     this.loggedUsername = username;
 
     this.usersService.getUser(this.loggedUsername).subscribe(user => {
+      console.log(user);
       this.loggedUser = user as User;
     })
   }

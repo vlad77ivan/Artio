@@ -63,9 +63,9 @@ export class LoginComponent implements OnInit {
         this.usersService.signUp({
             username: this.username,
             password: this.password,
-            firstname: this.firstname,
-            lastname: this.lastname,
-            profilePhoto: this.imageSrc,
+            first_name: this.firstname,
+            last_name: this.lastname,
+            profile_picture: this.imageSrc,
             description: this.description
         }).subscribe((response) => {
                 console.log(response);

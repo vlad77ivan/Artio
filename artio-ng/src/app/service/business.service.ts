@@ -21,4 +21,8 @@ export class BusinessService {
     postReview(review: Review) {
         return this.http.post(baseUrl + '/review', review);
     }
+
+    getExplore() {
+        return this.http.get(baseUrl + '/explore');
+    }
 }   

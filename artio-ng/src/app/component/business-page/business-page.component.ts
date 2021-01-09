@@ -27,7 +27,11 @@ export class BusinessPageComponent implements OnInit {
 
     ngOnInit() {
         this.businessService.getReviews(this.business.username).subscribe((reviews) => {
-            this.reviews = reviews as Array<Review>;
+            if (reviews) {
+                this.reviews = reviews as Array<Review>;
+            } else {
+                this.reviews = [];
+            }
         })
     }
 
