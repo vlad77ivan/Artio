@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { LoginComponent } from './component/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import { LoginComponent } from './component/login/login.component';
     MatInputModule,
     MatRadioModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule, 
+    HttpClientModule
   ],
   providers: [UtilsService],
   bootstrap: [AppComponent]

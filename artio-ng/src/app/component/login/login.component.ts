@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { User } from 'src/app/model/user';
+import { UsersService } from 'src/app/service/user.service';
 import { UtilsService } from 'src/app/service/utils.service';
 
 @Component({
@@ -12,13 +13,17 @@ export class LoginComponent implements OnInit {
     public password: string = '';
     public loginMode = true;
 
+    @Output() logEmitter = new EventEmitter<string>();
 
     public lastname: string = '';
     public firstname: string = '';
     public description: string = '';
     public imageSrc: string = '';
 
-    constructor(private utilsService: UtilsService) {
+    constructor(
+        private utilsService: UtilsService,
+        private usersService: UsersService
+    ) {
     }
 
     ngOnInit() {
@@ -43,7 +48,11 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        console.log(this.username + this.password)
+        this.usersService.logIn(this.username, this.password).subscribe((response) => {
+            if (response) {
+                this.logEmitter.emit(this.username);
+            }
+        })
     }
 
     signUpToggle() {
@@ -51,11 +60,16 @@ export class LoginComponent implements OnInit {
     }
 
     signUp() {
-        console.log(this.username);
-        console.log(this.password);
-        console.log(this.lastname);
-        console.log(this.firstname);
-        console.log(this.description);
-        console.log(this.imageSrc);
+        this.usersService.signUp({
+            username: this.username,
+            password: this.password,
+            firstname: this.firstname,
+            lastname: this.lastname,
+            profilePhoto: this.imageSrc,
+            description: this.description
+        }).subscribe((response) => {
+                console.log(response);
+                this.logEmitter.emit(this.username);
+        });
     }
 }

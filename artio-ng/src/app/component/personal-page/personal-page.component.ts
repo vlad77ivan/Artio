@@ -1,4 +1,4 @@
-import { OnInit, Component } from "@angular/core";
+import { OnInit, Component, Input } from "@angular/core";
 import { Post } from "src/app/model/post";
 import { User } from "src/app/model/user";
 import { UtilsService } from "src/app/service/utils.service";
@@ -14,14 +14,8 @@ export class PersonalPage implements OnInit {
     public newPostText: string = '';
     public imageSrc: string = '';
 
-    public user: User = {
-        username: "milbay",
-        firstname: "Mill",
-        lastname: "Bay",
-
-        profilePhoto: "caca",
-        description: "Imi place sa mananc aicea vreau sa imi iau un caine si sa cunosc alti pasionati de shaorma. \n Peste medie. Imi place sa mananc aicea vreau sa imi iau un caine si sa cunosc alti pasionati de shaorma. \n Peste medie. Imi place sa mananc aicea vreau sa imi iau un caine si sa cunosc alti pasionati de shaorma. \n Peste medie."
-    };
+    @Input()
+    user!: User;
 
     public posts: Array<Post> = [ 
         {
@@ -71,6 +65,11 @@ export class PersonalPage implements OnInit {
     constructor(private utilsService: UtilsService) {
     }
 
+    ngOnInit() {
+        console.log(this.user);
+    }
+
+
     getImage(encodedImage: string) {
         return this.utilsService.getImage(encodedImage);
     }
@@ -98,6 +97,5 @@ export class PersonalPage implements OnInit {
         console.log(this.newPostText);
     }
 
-    ngOnInit() {
-    }
+   
 }

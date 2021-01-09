@@ -19,7 +19,9 @@ export class BusinessPageComponent implements OnInit {
     newRating: number = -1;
     newReviewText: string = "";
 
-    public user: User = {
+    public reviews: Array<Review> = [];
+
+    @Input() user: User = {
         username: "milbay",
         firstname: "Mill",
         lastname: "Bay",
@@ -27,30 +29,6 @@ export class BusinessPageComponent implements OnInit {
         profilePhoto: "caca",
         description: "."
     };
-
-    public reviews: Array<Review> = [
-        {
-            text: "peste medie o fost super tare",
-            timestamp: new Date(),
-            rating: 3,
-            user: this.user,
-            business: this.business
-        },
-        {
-            text: "peste medie o fost super tare cea mai smechera cu de toate",
-            timestamp: new Date(),
-            rating: 5,
-            user: this.user,
-            business: this.business
-        },
-        {
-            text: "naspa tare ketchup ieftin",
-            timestamp: new Date(),
-            rating: 2,
-            user: this.user,
-            business: this.business
-        },
-    ];
 
     constructor(private utilsService: UtilsService) {
     }
