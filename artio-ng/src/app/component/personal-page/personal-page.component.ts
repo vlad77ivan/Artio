@@ -27,7 +27,11 @@ export class PersonalPage implements OnInit {
     ngOnInit() {
         console.log(this.user);
         this.usersService.getPosts(this.user.username).subscribe((posts) => {
-            this.posts = posts as Array<Post>;
+            if (posts) {
+                this.posts = posts as Array<Post>;
+            } else {
+                this.posts = [];
+            }
         });
     }
 

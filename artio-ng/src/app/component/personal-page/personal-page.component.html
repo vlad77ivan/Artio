@@ -1,13 +1,13 @@
 <mat-grid-list cols="4" class="profile-top">
     <mat-grid-tile [colspan]="1">
     
-        <img class="profile-photo" [src]="getImage(user.profilePhoto)"/>
+        <img class="profile-photo" [src]="getImage(user.profile_picture)"/>
         
     </mat-grid-tile>
     
     <mat-grid-tile [colspan]="3">
         <div class="description-container">
-            <p class="mat-display-1" style="font-weight: bold;"> {{this.user.firstname}} {{this.user.lastname}} </p>
+            <p class="mat-display-1" style="font-weight: bold;"> {{this.user.first_name}} {{this.user.last_name}} </p>
             <p class="mat-h1"> {{this.user.description}} </p>
         </div>
     </mat-grid-tile>

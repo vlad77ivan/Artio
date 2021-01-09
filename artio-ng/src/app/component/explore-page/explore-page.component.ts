@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/model/user';
+import { BusinessService } from 'src/app/service/business.service';
 import { UtilsService } from 'src/app/service/utils.service';
 import { Business } from '../../model/business'
 @Component({
@@ -15,30 +16,11 @@ export class ExplorePageComponent implements OnInit {
         profilePhoto: "a",
         description: "Buna ziua avem shaorma fffffff mare si ffff buna si fffffff mare si ffff buna si fffffff mare si ffff buna si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si tot ce vrea plt hai barosane sau comanda la numarul 0792 constipatie amandoi"
     } as Business;
-    public user: User = {
-        username: "milbay",
-        firstname: "Mill",
-        lastname: "Bay",
 
-        profilePhoto: "caca",
-        description: "."
-    };
+    @Input() user: User = {} as User;
     
-    public latestItems: Array<any> = [
-        {
-            photo: "",
-            text: "doamne fereste ce am putut vedea aici terifiant super cool amaizng wow guys like gen ce tare",
-            username: "carnat",
-            timestamp: new Date()
-        },
-        {
-            text: "peste medie o fost super tare",
-            timestamp: new Date(),
-            rating: 3,
-            user: this.user,
-            business: this.businessToShow
-        },
-    ]
+    public latestItems: Array<any> = []
+
     businesses = [
         {
             username: "socului_rulz",
@@ -60,12 +42,23 @@ export class ExplorePageComponent implements OnInit {
         } as Business
     ]
 
-    constructor(private utilsService: UtilsService) {
+    constructor(private utilsService: UtilsService,
+        private businessService: BusinessService) {
     }   
 
     ngOnInit() {
+        this.getBusinesses();
+        this.businessService.getExplore().subscribe((items) => {
+            this.latestItems = items as Array<any>;
+        })
     }
 
+    getBusinesses() {
+        // x 3
+        this.businessService.getBusiness('').subscribe((business) => {
+            this.businesses.push(business as Business);
+        })
+    }
 
     getImage(encodedImage: string) {
         return this.utilsService.getImage(encodedImage);
