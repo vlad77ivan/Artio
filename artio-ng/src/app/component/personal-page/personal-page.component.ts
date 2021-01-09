@@ -25,7 +25,6 @@ export class PersonalPage implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.user);
         this.usersService.getPosts(this.user.username).subscribe((posts) => {
             if (posts) {
                 this.posts = posts as Array<Post>;
@@ -55,7 +54,6 @@ export class PersonalPage implements OnInit {
     _handleReaderLoaded(e: any) {
         let reader = e.target;
         this.imageSrc = reader.result;
-        console.log(this.imageSrc)
     }
 
     makePost() {

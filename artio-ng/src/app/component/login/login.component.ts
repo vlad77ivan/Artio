@@ -44,7 +44,6 @@ export class LoginComponent implements OnInit {
     _handleReaderLoaded(e: any) {
         let reader = e.target;
         this.imageSrc = reader.result;
-        console.log(this.imageSrc)
     }
 
     login() {
@@ -68,7 +67,6 @@ export class LoginComponent implements OnInit {
             profile_picture: this.imageSrc,
             description: this.description
         }).subscribe((response) => {
-                console.log(response);
                 this.logEmitter.emit(this.username);
         });
     }
