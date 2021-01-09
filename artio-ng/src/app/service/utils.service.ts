@@ -11,7 +11,10 @@ export class UtilsService {
     constructor(private sanitizer: DomSanitizer) { }
 
     getImage(encodedImage: string) {
-        console.log(encodedImage);
-        return this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${image}`);
+        if (encodedImage) {
+            return this.sanitizer.bypassSecurityTrustResourceUrl(encodedImage);
+        } else {
+            return this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${image}`);
+        }
     }
 }

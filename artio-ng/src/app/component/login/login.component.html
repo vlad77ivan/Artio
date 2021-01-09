@@ -49,7 +49,7 @@
                 <label for="fname5">Profile Photo</label>
                 <input name="imageUrl" id="fname5" type="file" accept="image/*" (change)="handleInputChange($event)" />
             </div>
-            <button mat-stroked-button class="submit-button" type="button" (click)="signUp()">
+            <button mat-stroked-button class="submit-button" type="button" (click)="signUp()" [disabled]="checkFields()">
                 Sign Up
             </button>
         </div>

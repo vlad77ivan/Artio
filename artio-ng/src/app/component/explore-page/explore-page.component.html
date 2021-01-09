@@ -2,8 +2,8 @@
     <mat-grid-list cols="3" class="profile-top" rowHeight="25rem">
         <mat-grid-tile *ngFor="let business of businesses " [colspan]="1" >
             <div class="company-explore-container" (click)="openBusiness(business)">
-                <p class="mat-h2" style="text-align: center;">{{business.companyName}}</p>
-                <img class="profile-photo" [src]="getImage(business.profilePhoto)"/>
+                <p class="mat-h2" style="text-align: center;">{{business.company_name}}</p>
+                <img class="profile-photo" [src]="getImage(business.profile_picture)"/>
             </div>
         </mat-grid-tile>
     </mat-grid-list>

@@ -60,7 +60,7 @@ export class PersonalPage implements OnInit {
 
     makePost() {
         const newPost = {
-            username: this.user.username,
+            user: this.user.username,
             text: this.newPostText,
             photo: this.imageSrc,
             timestamp: new Date(),
@@ -71,5 +71,8 @@ export class PersonalPage implements OnInit {
         });
     }
 
+    checkFields(): boolean {
+        return this.newPostText === '';
+    }
    
 }

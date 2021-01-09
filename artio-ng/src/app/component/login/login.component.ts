@@ -72,4 +72,10 @@ export class LoginComponent implements OnInit {
                 this.logEmitter.emit(this.username);
         });
     }
+
+    checkFields(): boolean {
+        return this.lastname === '' || this.firstname === '' 
+            || this.username === '' || this.password === ''
+            || this.description === '';
+    }
 }

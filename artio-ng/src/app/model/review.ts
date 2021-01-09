@@ -7,5 +7,4 @@ export interface Review {
 	rating: number;
 	user: string;
 	business: string;
-
 }

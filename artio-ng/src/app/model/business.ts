@@ -1,7 +1,7 @@
 export interface Business {
 	username: string;
-	companyName: string;
+	company_name: string;
 
-	profilePhoto: string;
+	profile_picture: string;
 	description: string;
 }

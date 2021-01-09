@@ -12,8 +12,8 @@ export class ExplorePageComponent implements OnInit {
     public showBusiness = false;
     public businessToShow = {
         username: "socului_rulz",
-        companyName: "Shaormeria Socului",
-        profilePhoto: "a",
+        company_name: "Shaormeria Socului",
+        profile_picture: "a",
         description: "Buna ziua avem shaorma fffffff mare si ffff buna si fffffff mare si ffff buna si fffffff mare si ffff buna si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si tot ce vrea plt hai barosane sau comanda la numarul 0792 constipatie amandoi"
     } as Business;
 
@@ -24,20 +24,20 @@ export class ExplorePageComponent implements OnInit {
     businesses = [
         {
             username: "socului_rulz",
-            companyName: "Shaormeria Snecherie",
-            profilePhoto: "a",
+            company_name: "Shaormeria Snecherie",
+            profile_picture: "a",
             description: "Buna ziua avem shaorma fffffff mare si ffff buna si fffffff mare si ffff buna si fffffff mare si ffff buna si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si tot ce vrea plt hai barosane sau comanda la numarul 0792 constipatie amandoi"
         } as Business,
         {
             username: "socului_rulz",
-            companyName: "Shaormeria Golanie",
-            profilePhoto: "a",
+            company_name: "Shaormeria Golanie",
+            profile_picture: "a",
             description: "Buna ziua avem shaorma fffffff mare si ffff buna si fffffff mare si ffff buna si fffffff mare si ffff buna si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si tot ce vrea plt hai barosane sau comanda la numarul 0792 constipatie amandoi"
         } as Business,
         {
             username: "socului_rulz",
-            companyName: "Shaormeria Socului",
-            profilePhoto: "a",
+            company_name: "Shaormeria Socului",
+            profile_picture: "a",
             description: "Buna ziua avem shaorma fffffff mare si ffff buna si fffffff mare si ffff buna si fffffff mare si ffff buna si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si sarmale si cripsy si tot ce vrea plt hai barosane sau comanda la numarul 0792 constipatie amandoi"
         } as Business
     ]
@@ -55,9 +55,9 @@ export class ExplorePageComponent implements OnInit {
 
     getBusinesses() {
         // x 3
-        this.businessService.getBusiness('').subscribe((business) => {
-            this.businesses.push(business as Business);
-        })
+        // this.businessService.getBusiness('').subscribe((business) => {
+        //     this.businesses.push(business as Business);
+        // })
     }
 
     getImage(encodedImage: string) {
@@ -70,7 +70,7 @@ export class ExplorePageComponent implements OnInit {
     }
 
     isPost(item: any): boolean {
-        return item.hasOwnProperty('photo');
+        return !item.hasOwnProperty('business');
     }
 
     back() {

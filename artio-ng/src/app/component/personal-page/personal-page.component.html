@@ -25,7 +25,7 @@
             <input name="imageUrl" type="file" accept="image/*" (change)="handleInputChange($event)" />
         </div> 
 
-        <button mat-stroked-button class="submit-button" type="button" (click)="makePost()">
+        <button mat-stroked-button class="submit-button" type="button" (click)="makePost()" [disabled]="checkFields()">
             Submit
         </button>
     </div>

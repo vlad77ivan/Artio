@@ -27,6 +27,7 @@ export class BusinessPageComponent implements OnInit {
 
     ngOnInit() {
         this.businessService.getReviews(this.business.username).subscribe((reviews) => {
+            console.log(reviews);
             if (reviews) {
                 this.reviews = reviews as Array<Review>;
             } else {
@@ -41,7 +42,7 @@ export class BusinessPageComponent implements OnInit {
 
     postReview() {
         const newReview = {
-            business: this.business.companyName,
+            business: this.business.username,
             user: this.user.username,
             text: this.newReviewText,
             rating: this.newRating,
@@ -55,5 +56,9 @@ export class BusinessPageComponent implements OnInit {
 
     updateRating(event: any) {
         this.newRating = event.value;
+    }
+
+    checkFields(): boolean {
+        return this.newReviewText === '' || this.newRating === -1;
     }
 }
