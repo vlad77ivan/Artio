@@ -43,7 +43,8 @@ export class ExplorePageComponent implements OnInit {
 
     ngOnInit() {
         this.businessService.getExplore().subscribe((items) => {
-            this.latestItems = items as Array<any>;
+            const x = items as Array<any>;
+            this.latestItems = x.reverse();
         })
     }
 
